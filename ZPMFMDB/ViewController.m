@@ -7,10 +7,13 @@
 //
 
 #import "ViewController.h"
-#import "JQFMDB.h"
+#import "ZPMFMDB.h"
 #import "Person.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) ZPMFMDB *db;
+@property (nonatomic, strong) Person *person;
 
 @end
 
@@ -20,6 +23,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self initData];
+    
+    UIButton *insertBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [insertBtn setTitle:@"insert" forState:UIControlStateNormal];
+    [insertBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [insertBtn setFrame:CGRectMake(100, 100, 100, 30)];
+    [insertBtn addTarget:self action:@selector(inserData) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:insertBtn];
+    
+    UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [deleteBtn setTitle:@"delete" forState:UIControlStateNormal];
+    [deleteBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [deleteBtn setFrame:CGRectMake(100, 150, 100, 30)];
+    [deleteBtn addTarget:self action:@selector(deleteData) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:deleteBtn];
+    
+    UIButton *updateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [updateBtn setTitle:@"update" forState:UIControlStateNormal];
+    [updateBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [updateBtn setFrame:CGRectMake(100, 200, 100, 30)];
+    [updateBtn addTarget:self action:@selector(updateData) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:updateBtn];
+    
+    UIButton *lookupBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [lookupBtn setTitle:@"lookup" forState:UIControlStateNormal];
+    [lookupBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [lookupBtn setFrame:CGRectMake(100, 250, 100, 30)];
+    [lookupBtn addTarget:self action:@selector(lookupData) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:lookupBtn];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)initData
+{
     Person *person = [[Person alloc] init];
     person.name = @"cleanmonkey";
     person.phoneNum = @(18866668888);
@@ -29,20 +71,44 @@
     person.age = 26;
     person.height = 172.12;
     person.weight = 120.4555;
+    self.person = person;
     
-    JQFMDB *db = [JQFMDB shareDatabase];
-    NSLog(@"last:%ld", (long)[db lastInsertPrimaryKeyId:@"user"]);
-    
-    [db jq_createTable:@"user" dicOrModel:person];
-    
-    //插入一条数据
-    [db jq_insertTable:@"user" dicOrModel:person];
+    ZPMFMDB *db = [ZPMFMDB shareDatabase:@"ZpmHomeList.sqlite"];
+    self.db = db;
+    [db zpm_createTable:@"user" dicOrModel:person];
 }
 
+- (void)inserData
+{
+    //插入一条数据
+    [_db zpm_insertTable:@"user" dicOrModel:_person];
+    
+    NSLog(@"last:%ld", (long)[_db lastInsertPrimaryKeyId:@"user"]);
+}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)deleteData
+{
+    //删除最后一条数据
+    [_db zpm_deleteTable:@"user" whereFormat:@"WHERE rowid = (SELECT max(rowid) FROM user)"];
+}
+
+- (void)updateData
+{
+    [_db zpm_updateTable:@"user" dicOrModel:@{@"name":@"testName"} whereFormat:@"WHERE rowid = (SELECT max(rowid) FROM user)"];
+}
+
+- (void)lookupData
+{
+    //查找表中所有数据
+    NSArray *personArr = [_db zpm_lookupTable:@"user" dicOrModel:[Person class] whereFormat:nil];
+    NSLog(@"表中所有数据:%@", personArr);
+}
+
+- (void)lookupDataWithId
+{
+    //查找表中所有数据
+    NSArray *personArr = [_db zpm_lookupTable:@"user" dicOrModel:[Person class] whereFormat:@"where pkid = '2'"];
+    NSLog(@"name=cleanmonkey:%@", personArr);
 }
 
 

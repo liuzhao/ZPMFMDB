@@ -1,11 +1,12 @@
 //
-//  JQFMDB.m
+//  ZPMFMDB.m
+//  ZPMFMDB
 //
-//  Created by Joker on 17/3/7.
-//  GitHub: https://github.com/gaojunquan/JQFMDB
+//  Created by Liu Zhao on 2018/3/27.
+//  Copyright © 2018年 Liu Zhao. All rights reserved.
 //
 
-#import "JQFMDB.h"
+#import "ZPMFMDB.h"
 #import "FMDB.h"
 #import <objc/runtime.h>
 
@@ -15,7 +16,7 @@
 #define SQL_REAL     @"REAL" //浮点
 #define SQL_BLOB     @"BLOB" //data
 
-@interface JQFMDB ()
+@interface ZPMFMDB ()
 
 @property (nonatomic, strong)NSString *dbPath;
 @property (nonatomic, strong)FMDatabaseQueue *dbQueue;
@@ -23,7 +24,7 @@
 
 @end
 
-@implementation JQFMDB
+@implementation ZPMFMDB
 
 - (FMDatabaseQueue *)dbQueue
 {
@@ -36,15 +37,15 @@
     return _dbQueue;
 }
 
-static JQFMDB *jqdb = nil;
+static ZPMFMDB *jqdb = nil;
 + (instancetype)shareDatabase
 {
-    return [JQFMDB shareDatabase:nil];
+    return [ZPMFMDB shareDatabase:nil];
 }
 
 + (instancetype)shareDatabase:(NSString *)dbName
 {
-    return [JQFMDB shareDatabase:dbName path:nil];
+    return [ZPMFMDB shareDatabase:dbName path:nil];
 }
 
 + (instancetype)shareDatabase:(NSString *)dbName path:(NSString *)dbPath
@@ -53,7 +54,7 @@ static JQFMDB *jqdb = nil;
         
         NSString *path;
         if (!dbName) {
-            dbName = @"JQFMDB.sqlite";
+            dbName = @"ZPMFMDB.sqlite";
         }
         if (!dbPath) {
             path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:dbName];
@@ -63,7 +64,7 @@ static JQFMDB *jqdb = nil;
         
         FMDatabase *fmdb = [FMDatabase databaseWithPath:path];
         if ([fmdb open]) {
-            jqdb = JQFMDB.new;
+            jqdb = ZPMFMDB.new;
             jqdb.db = fmdb;
             jqdb.dbPath = path;
         }
@@ -105,12 +106,12 @@ static JQFMDB *jqdb = nil;
     return nil;
 }
 
-- (BOOL)jq_createTable:(NSString *)tableName dicOrModel:(id)parameters
+- (BOOL)zpm_createTable:(NSString *)tableName dicOrModel:(id)parameters
 {
-    return [self jq_createTable:tableName dicOrModel:parameters excludeName:nil];
+    return [self zpm_createTable:tableName dicOrModel:parameters excludeName:nil];
 }
 
-- (BOOL)jq_createTable:(NSString *)tableName dicOrModel:(id)parameters excludeName:(NSArray *)nameArr
+- (BOOL)zpm_createTable:(NSString *)tableName dicOrModel:(id)parameters excludeName:(NSArray *)nameArr
 {
     
     NSDictionary *dic;
@@ -267,7 +268,7 @@ static JQFMDB *jqdb = nil;
 
 // 得到表里的字段名称
 - (NSArray *)getColumnArr:(NSString *)tableName db:(FMDatabase *)db
-{    
+{
     NSMutableArray *mArr = [NSMutableArray arrayWithCapacity:0];
     
     FMResultSet *resultSet = [db getTableSchema:tableName];
@@ -280,7 +281,7 @@ static JQFMDB *jqdb = nil;
 }
 
 #pragma mark - *************** 增删改查
-- (BOOL)jq_insertTable:(NSString *)tableName dicOrModel:(id)parameters
+- (BOOL)zpm_insertTable:(NSString *)tableName dicOrModel:(id)parameters
 {
     NSArray *columnArr = [self getColumnArr:tableName db:_db];
     return [self insertTable:tableName dicOrModel:parameters columnArr:columnArr];
@@ -321,7 +322,7 @@ static JQFMDB *jqdb = nil;
     return flag;
 }
 
-- (BOOL)jq_deleteTable:(NSString *)tableName whereFormat:(NSString *)format, ...
+- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormat:(NSString *)format, ...
 {
     va_list args;
     va_start(args, format);
@@ -334,7 +335,7 @@ static JQFMDB *jqdb = nil;
     return flag;
 }
 
-- (BOOL)jq_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...
+- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...
 {
     va_list args;
     va_start(args, format);
@@ -370,7 +371,7 @@ static JQFMDB *jqdb = nil;
     return flag;
 }
 
-- (NSArray *)jq_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...
 {
     va_list args;
     va_start(args, format);
@@ -457,7 +458,7 @@ static JQFMDB *jqdb = nil;
 }
 
 // 直接传一个array插入
-- (NSArray *)jq_insertTable:(NSString *)tableName dicOrModelArray:(NSArray *)dicOrModelArray
+- (NSArray *)zpm_insertTable:(NSString *)tableName dicOrModelArray:(NSArray *)dicOrModelArray
 {
     
     int errorIndex = 0;
@@ -475,7 +476,7 @@ static JQFMDB *jqdb = nil;
     return resultMArr;
 }
 
-- (BOOL)jq_deleteTable:(NSString *)tableName
+- (BOOL)zpm_deleteTable:(NSString *)tableName
 {
     
     NSString *sqlstr = [NSString stringWithFormat:@"DROP TABLE %@", tableName];
@@ -486,7 +487,7 @@ static JQFMDB *jqdb = nil;
     return YES;
 }
 
-- (BOOL)jq_deleteAllDataFromTable:(NSString *)tableName
+- (BOOL)zpm_deleteAllDataFromTable:(NSString *)tableName
 {
     
     NSString *sqlstr = [NSString stringWithFormat:@"DELETE FROM %@", tableName];
@@ -498,7 +499,7 @@ static JQFMDB *jqdb = nil;
     return YES;
 }
 
-- (BOOL)jq_isExistTable:(NSString *)tableName
+- (BOOL)zpm_isExistTable:(NSString *)tableName
 {
     
     FMResultSet *set = [_db executeQuery:@"SELECT count(*) as 'count' FROM sqlite_master WHERE type ='table' and name = ?", tableName];
@@ -514,12 +515,12 @@ static JQFMDB *jqdb = nil;
     return NO;
 }
 
-- (NSArray *)jq_columnNameArray:(NSString *)tableName
+- (NSArray *)zpm_columnNameArray:(NSString *)tableName
 {
     return [self getColumnArr:tableName db:_db];
 }
 
-- (int)jq_tableItemCount:(NSString *)tableName
+- (int)zpm_tableItemCount:(NSString *)tableName
 {
     
     NSString *sqlstr = [NSString stringWithFormat:@"SELECT count(*) as 'count' FROM %@", tableName];
@@ -547,20 +548,20 @@ static JQFMDB *jqdb = nil;
     FMResultSet *set = [_db executeQuery:sqlstr];
     while ([set next])
     {
-        return [set longLongIntForColumn:@"pkid"];
+        return (NSInteger)[set longLongIntForColumn:@"pkid"];
     }
     return 0;
 }
 
-- (BOOL)jq_alterTable:(NSString *)tableName dicOrModel:(id)parameters
+- (BOOL)zpm_alterTable:(NSString *)tableName dicOrModel:(id)parameters
 {
-    return [self jq_alterTable:tableName dicOrModel:parameters excludeName:nil];
+    return [self zpm_alterTable:tableName dicOrModel:parameters excludeName:nil];
 }
 
-- (BOOL)jq_alterTable:(NSString *)tableName dicOrModel:(id)parameters excludeName:(NSArray *)nameArr
+- (BOOL)zpm_alterTable:(NSString *)tableName dicOrModel:(id)parameters excludeName:(NSArray *)nameArr
 {
     __block BOOL flag;
-    [self jq_inTransaction:^(BOOL *rollback) {
+    [self zpm_inTransaction:^(BOOL *rollback) {
         if ([parameters isKindOfClass:[NSDictionary class]]) {
             for (NSString *key in parameters) {
                 if ([nameArr containsObject:key]) {
@@ -605,7 +606,7 @@ static JQFMDB *jqdb = nil;
 
 // =============================   线程安全操作    ===============================
 
-- (void)jq_inDatabase:(void(^)(void))block
+- (void)zpm_inDatabase:(void(^)(void))block
 {
     
     [[self dbQueue] inDatabase:^(FMDatabase *db) {
@@ -613,7 +614,7 @@ static JQFMDB *jqdb = nil;
     }];
 }
 
-- (void)jq_inTransaction:(void(^)(BOOL *rollback))block
+- (void)zpm_inTransaction:(void(^)(BOOL *rollback))block
 {
     
     [[self dbQueue] inTransaction:^(FMDatabase *db, BOOL *rollback) {
@@ -622,6 +623,4 @@ static JQFMDB *jqdb = nil;
     
 }
 
-
 @end
-

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2502078B2069D05F00F5AC70 /* ZPMFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 2502078A2069D05F00F5AC70 /* ZPMFMDB.m */; };
 		25DC09792068F8AB00EFB510 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09782068F8AB00EFB510 /* AppDelegate.m */; };
 		25DC097C2068F8AB00EFB510 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC097B2068F8AB00EFB510 /* ViewController.m */; };
 		25DC097F2068F8AB00EFB510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DC097D2068F8AB00EFB510 /* Main.storyboard */; };
 		25DC09812068F8AB00EFB510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25DC09802068F8AB00EFB510 /* Assets.xcassets */; };
 		25DC09842068F8AB00EFB510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DC09822068F8AB00EFB510 /* LaunchScreen.storyboard */; };
 		25DC09872068F8AB00EFB510 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09862068F8AB00EFB510 /* main.m */; };
-		25DC09A12068F97E00EFB510 /* JQFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC099F2068F97E00EFB510 /* JQFMDB.m */; };
 		25DC09AE2068F99C00EFB510 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09A42068F99C00EFB510 /* FMDatabaseQueue.m */; };
 		25DC09AF2068F99C00EFB510 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09A72068F99C00EFB510 /* FMDatabaseAdditions.m */; };
 		25DC09B02068F99C00EFB510 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09A82068F99C00EFB510 /* FMDatabase.m */; };
@@ -23,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		250207892069D05F00F5AC70 /* ZPMFMDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMFMDB.h; sourceTree = "<group>"; };
+		2502078A2069D05F00F5AC70 /* ZPMFMDB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMFMDB.m; sourceTree = "<group>"; };
 		25DC09742068F8AB00EFB510 /* ZPMFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZPMFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DC09772068F8AB00EFB510 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		25DC09782068F8AB00EFB510 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -33,8 +35,6 @@
 		25DC09832068F8AB00EFB510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25DC09852068F8AB00EFB510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25DC09862068F8AB00EFB510 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		25DC099F2068F97E00EFB510 /* JQFMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQFMDB.m; sourceTree = "<group>"; };
-		25DC09A02068F97E00EFB510 /* JQFMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQFMDB.h; sourceTree = "<group>"; };
 		25DC09A32068F99C00EFB510 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		25DC09A42068F99C00EFB510 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		25DC09A52068F99C00EFB510 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 		25DC099E2068F97E00EFB510 /* ZPMDB */ = {
 			isa = PBXGroup;
 			children = (
-				25DC099F2068F97E00EFB510 /* JQFMDB.m */,
-				25DC09A02068F97E00EFB510 /* JQFMDB.h */,
+				250207892069D05F00F5AC70 /* ZPMFMDB.h */,
+				2502078A2069D05F00F5AC70 /* ZPMFMDB.m */,
 			);
 			path = ZPMDB;
 			sourceTree = "<group>";
@@ -201,9 +201,9 @@
 				25DC09872068F8AB00EFB510 /* main.m in Sources */,
 				25DC09B02068F99C00EFB510 /* FMDatabase.m in Sources */,
 				25DC09792068F8AB00EFB510 /* AppDelegate.m in Sources */,
+				2502078B2069D05F00F5AC70 /* ZPMFMDB.m in Sources */,
 				25DC09B12068F99C00EFB510 /* FMDatabasePool.m in Sources */,
 				25DC09B22068F99C00EFB510 /* FMResultSet.m in Sources */,
-				25DC09A12068F97E00EFB510 /* JQFMDB.m in Sources */,
 				25DC09AF2068F99C00EFB510 /* FMDatabaseAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
