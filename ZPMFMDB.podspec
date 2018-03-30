@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ZPMFMDB"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "封装好的FMDB，不会SQL语句也能使用."
 
   # This description is used to generate tags and improve search results.
