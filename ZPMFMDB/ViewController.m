@@ -10,6 +10,8 @@
 #import "ZPMFMDB.h"
 #import "Person.h"
 
+#define LIST_NAME @"HomeList"
+
 @interface ViewController ()
 
 @property (nonatomic, strong) ZPMFMDB *db;
@@ -63,52 +65,52 @@
 - (void)initData
 {
     Person *person = [[Person alloc] init];
-    person.name = @"cleanmonkey";
-    person.phoneNum = @(18866668888);
-    person.photoData = UIImagePNGRepresentation([UIImage imageNamed:@"bg.jpg"]);
+    person.name = @"liuzhao";
+    person.phoneNum = @(18601387064);
+    person.photoData = UIImagePNGRepresentation([UIImage imageNamed:@"256.png"]);
     person.luckyNum = 7;
     person.sex = 0;
-    person.age = 26;
+    person.age = 18;
     person.height = 172.12;
     person.weight = 120.4555;
     self.person = person;
     
-    ZPMFMDB *db = [ZPMFMDB shareDatabase:@"ZpmHomeList.sqlite"];
+    ZPMFMDB *db = [ZPMFMDB shareDatabase:@"ZpmHome.sqlite"];
     self.db = db;
-    [db zpm_createTable:@"user" dicOrModel:person];
+    [db zpm_createTable:LIST_NAME dicOrModel:[Person class]];
 }
 
 - (void)inserData
 {
     //插入一条数据
-    [_db zpm_insertTable:@"user" dicOrModel:_person];
+    [_db zpm_insertTable:LIST_NAME dicOrModel:_person];
     
-    NSLog(@"last:%ld", (long)[_db lastInsertPrimaryKeyId:@"user"]);
+    NSLog(@"last:%ld", (long)[_db lastInsertPrimaryKeyId:@"HomeList"]);
 }
 
 - (void)deleteData
 {
     //删除最后一条数据
-    [_db zpm_deleteTable:@"user" whereFormat:@"WHERE rowid = (SELECT max(rowid) FROM user)"];
+    [_db zpm_deleteTable:LIST_NAME whereFormat:@"WHERE pkid = (SELECT min(pkid) FROM HomeList)"];
 }
 
 - (void)updateData
 {
-    [_db zpm_updateTable:@"user" dicOrModel:@{@"name":@"testName"} whereFormat:@"WHERE rowid = (SELECT max(rowid) FROM user)"];
+    [_db zpm_updateTable:LIST_NAME dicOrModel:@{@"name":@"testName"} whereFormat:@"WHERE pkid = (SELECT max(pkid) FROM HomeList)"];
 }
 
 - (void)lookupData
 {
     //查找表中所有数据
-    NSArray *personArr = [_db zpm_lookupTable:@"user" dicOrModel:[Person class] whereFormat:nil];
+    NSArray *personArr = [_db zpm_lookupTable:LIST_NAME dicOrModel:[Person class] whereFormat:nil];
     NSLog(@"表中所有数据:%@", personArr);
 }
 
 - (void)lookupDataWithId
 {
     //查找表中所有数据
-    NSArray *personArr = [_db zpm_lookupTable:@"user" dicOrModel:[Person class] whereFormat:@"where pkid = '2'"];
-    NSLog(@"name=cleanmonkey:%@", personArr);
+    NSArray *personArr = [_db zpm_lookupTable:LIST_NAME dicOrModel:[Person class] whereFormat:@"where pkid = '2'"];
+    NSLog(@"name=liuzhao:%@", personArr);
 }
 
 

@@ -8,23 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		2502078B2069D05F00F5AC70 /* ZPMFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 2502078A2069D05F00F5AC70 /* ZPMFMDB.m */; };
+		255E5998206E0E1E00265F1C /* 256.png in Resources */ = {isa = PBXBuildFile; fileRef = 255E5997206E0E1E00265F1C /* 256.png */; };
+		25AD668C206B2A950092BA02 /* ZPMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25AD668B206B2A950092BA02 /* ZPMFileManager.m */; };
 		25DC09792068F8AB00EFB510 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09782068F8AB00EFB510 /* AppDelegate.m */; };
 		25DC097C2068F8AB00EFB510 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC097B2068F8AB00EFB510 /* ViewController.m */; };
 		25DC097F2068F8AB00EFB510 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DC097D2068F8AB00EFB510 /* Main.storyboard */; };
 		25DC09812068F8AB00EFB510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25DC09802068F8AB00EFB510 /* Assets.xcassets */; };
 		25DC09842068F8AB00EFB510 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DC09822068F8AB00EFB510 /* LaunchScreen.storyboard */; };
 		25DC09872068F8AB00EFB510 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09862068F8AB00EFB510 /* main.m */; };
-		25DC09AE2068F99C00EFB510 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09A42068F99C00EFB510 /* FMDatabaseQueue.m */; };
-		25DC09AF2068F99C00EFB510 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09A72068F99C00EFB510 /* FMDatabaseAdditions.m */; };
-		25DC09B02068F99C00EFB510 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09A82068F99C00EFB510 /* FMDatabase.m */; };
-		25DC09B12068F99C00EFB510 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09AC2068F99C00EFB510 /* FMDatabasePool.m */; };
-		25DC09B22068F99C00EFB510 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09AD2068F99C00EFB510 /* FMResultSet.m */; };
 		25DC09B52068F9AD00EFB510 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DC09B32068F9AC00EFB510 /* Person.m */; };
+		A0840BFA061F6CB95CAFECA6 /* libPods-ZPMFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 766E38FCD004F4F4C8A63DA6 /* libPods-ZPMFMDB.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C900A28E97423D38CE0C64F /* Pods-ZPMFMDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZPMFMDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZPMFMDB/Pods-ZPMFMDB.debug.xcconfig"; sourceTree = "<group>"; };
 		250207892069D05F00F5AC70 /* ZPMFMDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMFMDB.h; sourceTree = "<group>"; };
 		2502078A2069D05F00F5AC70 /* ZPMFMDB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMFMDB.m; sourceTree = "<group>"; };
+		255E5997206E0E1E00265F1C /* 256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 256.png; sourceTree = "<group>"; };
+		25AD668A206B2A950092BA02 /* ZPMFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPMFileManager.h; sourceTree = "<group>"; };
+		25AD668B206B2A950092BA02 /* ZPMFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPMFileManager.m; sourceTree = "<group>"; };
 		25DC09742068F8AB00EFB510 /* ZPMFMDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZPMFMDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DC09772068F8AB00EFB510 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		25DC09782068F8AB00EFB510 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -35,19 +37,10 @@
 		25DC09832068F8AB00EFB510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25DC09852068F8AB00EFB510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25DC09862068F8AB00EFB510 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		25DC09A32068F99C00EFB510 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
-		25DC09A42068F99C00EFB510 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
-		25DC09A52068F99C00EFB510 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
-		25DC09A62068F99C00EFB510 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
-		25DC09A72068F99C00EFB510 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
-		25DC09A82068F99C00EFB510 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
-		25DC09A92068F99C00EFB510 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
-		25DC09AA2068F99C00EFB510 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
-		25DC09AB2068F99C00EFB510 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
-		25DC09AC2068F99C00EFB510 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
-		25DC09AD2068F99C00EFB510 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		25DC09B32068F9AC00EFB510 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		25DC09B42068F9AD00EFB510 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		766E38FCD004F4F4C8A63DA6 /* libPods-ZPMFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZPMFMDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD8B505376055BBEE406DE5B /* Pods-ZPMFMDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZPMFMDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZPMFMDB/Pods-ZPMFMDB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0840BFA061F6CB95CAFECA6 /* libPods-ZPMFMDB.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +60,8 @@
 			children = (
 				25DC09762068F8AB00EFB510 /* ZPMFMDB */,
 				25DC09752068F8AB00EFB510 /* Products */,
+				E115B493FE7F6F704F769D8C /* Pods */,
+				7C067A9DC05998C464E1013D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,7 +76,6 @@
 		25DC09762068F8AB00EFB510 /* ZPMFMDB */ = {
 			isa = PBXGroup;
 			children = (
-				25DC09A22068F99C00EFB510 /* FMDB */,
 				25DC099E2068F97E00EFB510 /* ZPMDB */,
 				25DC09772068F8AB00EFB510 /* AppDelegate.h */,
 				25DC09782068F8AB00EFB510 /* AppDelegate.m */,
@@ -88,10 +83,13 @@
 				25DC097B2068F8AB00EFB510 /* ViewController.m */,
 				25DC09B42068F9AD00EFB510 /* Person.h */,
 				25DC09B32068F9AC00EFB510 /* Person.m */,
+				25AD668A206B2A950092BA02 /* ZPMFileManager.h */,
+				25AD668B206B2A950092BA02 /* ZPMFileManager.m */,
 				25DC097D2068F8AB00EFB510 /* Main.storyboard */,
 				25DC09802068F8AB00EFB510 /* Assets.xcassets */,
 				25DC09822068F8AB00EFB510 /* LaunchScreen.storyboard */,
 				25DC09852068F8AB00EFB510 /* Info.plist */,
+				255E5997206E0E1E00265F1C /* 256.png */,
 				25DC09862068F8AB00EFB510 /* main.m */,
 			);
 			path = ZPMFMDB;
@@ -106,22 +104,21 @@
 			path = ZPMDB;
 			sourceTree = "<group>";
 		};
-		25DC09A22068F99C00EFB510 /* FMDB */ = {
+		7C067A9DC05998C464E1013D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				25DC09A32068F99C00EFB510 /* FMDatabase.h */,
-				25DC09A42068F99C00EFB510 /* FMDatabaseQueue.m */,
-				25DC09A52068F99C00EFB510 /* FMResultSet.h */,
-				25DC09A62068F99C00EFB510 /* FMDatabasePool.h */,
-				25DC09A72068F99C00EFB510 /* FMDatabaseAdditions.m */,
-				25DC09A82068F99C00EFB510 /* FMDatabase.m */,
-				25DC09A92068F99C00EFB510 /* FMDatabaseQueue.h */,
-				25DC09AA2068F99C00EFB510 /* FMDB.h */,
-				25DC09AB2068F99C00EFB510 /* FMDatabaseAdditions.h */,
-				25DC09AC2068F99C00EFB510 /* FMDatabasePool.m */,
-				25DC09AD2068F99C00EFB510 /* FMResultSet.m */,
+				766E38FCD004F4F4C8A63DA6 /* libPods-ZPMFMDB.a */,
 			);
-			path = FMDB;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E115B493FE7F6F704F769D8C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C900A28E97423D38CE0C64F /* Pods-ZPMFMDB.debug.xcconfig */,
+				DD8B505376055BBEE406DE5B /* Pods-ZPMFMDB.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 25DC098A2068F8AB00EFB510 /* Build configuration list for PBXNativeTarget "ZPMFMDB" */;
 			buildPhases = (
+				BEDE17F52E34FC2F40705382 /* [CP] Check Pods Manifest.lock */,
 				25DC09702068F8AB00EFB510 /* Sources */,
 				25DC09712068F8AB00EFB510 /* Frameworks */,
 				25DC09722068F8AB00EFB510 /* Resources */,
+				5D911D5CCE95B8CF44D66523 /* [CP] Embed Pods Frameworks */,
+				0321EA874C2173B75A5F7C11 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -185,26 +185,74 @@
 				25DC09842068F8AB00EFB510 /* LaunchScreen.storyboard in Resources */,
 				25DC09812068F8AB00EFB510 /* Assets.xcassets in Resources */,
 				25DC097F2068F8AB00EFB510 /* Main.storyboard in Resources */,
+				255E5998206E0E1E00265F1C /* 256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0321EA874C2173B75A5F7C11 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZPMFMDB/Pods-ZPMFMDB-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D911D5CCE95B8CF44D66523 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZPMFMDB/Pods-ZPMFMDB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEDE17F52E34FC2F40705382 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZPMFMDB-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		25DC09702068F8AB00EFB510 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25DC09AE2068F99C00EFB510 /* FMDatabaseQueue.m in Sources */,
 				25DC097C2068F8AB00EFB510 /* ViewController.m in Sources */,
 				25DC09B52068F9AD00EFB510 /* Person.m in Sources */,
 				25DC09872068F8AB00EFB510 /* main.m in Sources */,
-				25DC09B02068F99C00EFB510 /* FMDatabase.m in Sources */,
 				25DC09792068F8AB00EFB510 /* AppDelegate.m in Sources */,
 				2502078B2069D05F00F5AC70 /* ZPMFMDB.m in Sources */,
-				25DC09B12068F99C00EFB510 /* FMDatabasePool.m in Sources */,
-				25DC09B22068F99C00EFB510 /* FMResultSet.m in Sources */,
-				25DC09AF2068F99C00EFB510 /* FMDatabaseAdditions.m in Sources */,
+				25AD668C206B2A950092BA02 /* ZPMFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +384,7 @@
 		};
 		25DC098B2068F8AB00EFB510 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C900A28E97423D38CE0C64F /* Pods-ZPMFMDB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -350,6 +399,7 @@
 		};
 		25DC098C2068F8AB00EFB510 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD8B505376055BBEE406DE5B /* Pods-ZPMFMDB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
