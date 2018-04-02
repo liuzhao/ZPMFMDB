@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-封装好的FMDB，不会SQL语句也能使用。一键创建表和键。
+封装好的FMDB，不会SQL语句也能使用。一键创建表和键。支持swift。
                    DESC
 
   s.homepage     = "https://github.com/liuzhao/ZPMFMDB"
