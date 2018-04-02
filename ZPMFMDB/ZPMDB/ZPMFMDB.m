@@ -322,7 +322,7 @@ static ZPMFMDB *jqdb = nil;
     return flag;
 }
 
-- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormat:(NSString *)format, ...
+- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormats:(NSString *)format, ...
 {
     va_list args;
     va_start(args, format);
@@ -335,7 +335,16 @@ static ZPMFMDB *jqdb = nil;
     return flag;
 }
 
-- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...
+- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormat:(NSString *)format
+{
+    BOOL flag;
+    NSMutableString *finalStr = [[NSMutableString alloc] initWithFormat:@"delete from %@  %@", tableName,format];
+    flag = [_db executeUpdate:finalStr];
+    
+    return flag;
+}
+
+- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormats:(NSString *)format, ...
 {
     va_list args;
     va_start(args, format);
@@ -371,7 +380,39 @@ static ZPMFMDB *jqdb = nil;
     return flag;
 }
 
-- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...
+- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format
+{
+    BOOL flag;
+    NSDictionary *dic;
+    NSArray *clomnArr = [self getColumnArr:tableName db:_db];
+    if ([parameters isKindOfClass:[NSDictionary class]]) {
+        dic = parameters;
+    }else {
+        dic = [self getModelPropertyKeyValue:parameters tableName:tableName clomnArr:clomnArr];
+    }
+    
+    NSMutableString *finalStr = [[NSMutableString alloc] initWithFormat:@"update %@ set ", tableName];
+    NSMutableArray *argumentsArr = [NSMutableArray arrayWithCapacity:0];
+    
+    for (NSString *key in dic) {
+        
+        if (![clomnArr containsObject:key] || [key isEqualToString:@"pkid"]) {
+            continue;
+        }
+        [finalStr appendFormat:@"%@ = %@,", key, @"?"];
+        [argumentsArr addObject:dic[key]];
+    }
+    
+    [finalStr deleteCharactersInRange:NSMakeRange(finalStr.length-1, 1)];
+    if (format.length) [finalStr appendFormat:@" %@", format];
+    
+    
+    flag =  [_db executeUpdate:finalStr withArgumentsInArray:argumentsArr];
+    
+    return flag;
+}
+
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormats:(NSString *)format, ...
 {
     va_list args;
     va_start(args, format);
@@ -380,6 +421,93 @@ static ZPMFMDB *jqdb = nil;
     NSMutableArray *resultMArr = [NSMutableArray arrayWithCapacity:0];
     NSDictionary *dic;
     NSMutableString *finalStr = [[NSMutableString alloc] initWithFormat:@"select * from %@ %@", tableName, where?where:@""];
+    NSArray *clomnArr = [self getColumnArr:tableName db:_db];
+    
+    FMResultSet *set = [_db executeQuery:finalStr];
+    
+    if ([parameters isKindOfClass:[NSDictionary class]]) {
+        dic = parameters;
+        
+        while ([set next]) {
+            
+            NSMutableDictionary *resultDic = [NSMutableDictionary dictionaryWithCapacity:0];
+            for (NSString *key in dic) {
+                
+                if ([dic[key] isEqualToString:SQL_TEXT]) {
+                    id value = [set stringForColumn:key];
+                    if (value)
+                        [resultDic setObject:value forKey:key];
+                } else if ([dic[key] isEqualToString:SQL_INTEGER]) {
+                    [resultDic setObject:@([set longLongIntForColumn:key]) forKey:key];
+                } else if ([dic[key] isEqualToString:SQL_REAL]) {
+                    [resultDic setObject:[NSNumber numberWithDouble:[set doubleForColumn:key]] forKey:key];
+                } else if ([dic[key] isEqualToString:SQL_BLOB]) {
+                    id value = [set dataForColumn:key];
+                    if (value)
+                        [resultDic setObject:value forKey:key];
+                }
+                
+            }
+            
+            if (resultDic) [resultMArr addObject:resultDic];
+        }
+        
+    }else {
+        
+        Class CLS;
+        if ([parameters isKindOfClass:[NSString class]]) {
+            if (!NSClassFromString(parameters)) {
+                CLS = nil;
+            } else {
+                CLS = NSClassFromString(parameters);
+            }
+        } else if ([parameters isKindOfClass:[NSObject class]]) {
+            CLS = [parameters class];
+        } else {
+            CLS = parameters;
+        }
+        
+        if (CLS) {
+            NSDictionary *propertyType = [self modelToDictionary:CLS excludePropertyName:nil];
+            
+            while ([set next]) {
+                
+                id model = CLS.new;
+                for (NSString *name in clomnArr) {
+                    if ([propertyType[name] isEqualToString:SQL_TEXT]) {
+                        id value = [set stringForColumn:name];
+                        if (value)
+                            [model setValue:value forKey:name];
+                    } else if ([propertyType[name] isEqualToString:SQL_INTEGER]) {
+                        [model setValue:@([set longLongIntForColumn:name]) forKey:name];
+                    } else if ([propertyType[name] isEqualToString:SQL_REAL]) {
+                        [model setValue:[NSNumber numberWithDouble:[set doubleForColumn:name]] forKey:name];
+                    } else if ([propertyType[name] isEqualToString:SQL_BLOB]) {
+                        id value = [set dataForColumn:name];
+                        if (value)
+                            [model setValue:value forKey:name];
+                    }
+                }
+                
+                [resultMArr addObject:model];
+            }
+        }
+        
+    }
+    
+    return resultMArr;
+}
+
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters
+{
+    return [self zpm_lookupTable:tableName dicOrModel:parameters whereFormat:nil];
+}
+
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format
+{
+    NSMutableArray *resultMArr = [NSMutableArray arrayWithCapacity:0];
+    NSDictionary *dic;
+    NSMutableString *finalStr = [[NSMutableString alloc] initWithFormat:@"select * from %@ %@", tableName, format ? format : @""];
     NSArray *clomnArr = [self getColumnArr:tableName db:_db];
     
     FMResultSet *set = [_db executeQuery:finalStr];

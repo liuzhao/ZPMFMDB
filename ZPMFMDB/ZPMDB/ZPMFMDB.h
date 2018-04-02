@@ -67,7 +67,8 @@
  @param format 条件语句, 如:@"where name = '小李'"
  @return 是否删除成功
  */
-- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormat:(NSString *)format, ...;
+- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormats:(NSString *)format, ...;
+- (BOOL)zpm_deleteTable:(NSString *)tableName whereFormat:(NSString *)format;
 
 /**
  更改: 根据条件更改表中数据
@@ -77,7 +78,8 @@
  @param format 条件语句, 如:@"where name = '小李'"
  @return 是否更改成功
  */
-- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...;
+- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormats:(NSString *)format, ...;
+- (BOOL)zpm_updateTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format;
 
 /**
  查找: 根据条件查找表中数据
@@ -87,7 +89,17 @@
  @param format 条件语句, 如:@"where name = '小李'",
  @return 将结果存入array,数组中的元素的类型为parameters的类型
  */
-- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format, ...;
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormats:(NSString *)format, ...;
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters whereFormat:(NSString *)format;
+
+/**
+ 查找：获取表中所有数据
+
+ @param tableName 表的名称
+ @param parameters parameters 每条查找结果放入model(可以是[Person class] or @"Person" or Person实例)或dictionary中
+ @return 将结果存入array,数组中的元素的类型为parameters的类型
+ */
+- (NSArray *)zpm_lookupTable:(NSString *)tableName dicOrModel:(id)parameters;
 
 /**
  批量插入或更改
