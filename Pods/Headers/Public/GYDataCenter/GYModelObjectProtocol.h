@@ -1,1 +1,0 @@
-../../../GYDataCenter/GYDataCenter/GYModelObjectProtocol.h

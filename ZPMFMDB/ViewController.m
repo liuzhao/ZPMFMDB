@@ -10,7 +10,7 @@
 #import "ZPMFMDB.h"
 #import "Person.h"
 
-#define LIST_NAME @"HomeList"
+#define TABLE_NAME @"HomeList"
 
 @interface ViewController ()
 
@@ -77,13 +77,13 @@
     
     ZPMFMDB *db = [ZPMFMDB shareDatabase:@"ZpmHome.sqlite"];
     self.db = db;
-    [db zpm_createTable:LIST_NAME dicOrModel:[Person class]];
+    [db zpm_createTable:TABLE_NAME dicOrModel:[Person class]];
 }
 
 - (void)inserData
 {
     //插入一条数据
-    [_db zpm_insertTable:LIST_NAME dicOrModel:_person];
+    [_db zpm_insertTable:TABLE_NAME dicOrModel:_person];
     
     NSLog(@"last:%ld", (long)[_db lastInsertPrimaryKeyId:@"HomeList"]);
 }
@@ -91,25 +91,25 @@
 - (void)deleteData
 {
     //删除最后一条数据
-    [_db zpm_deleteTable:LIST_NAME whereFormat:@"WHERE pkid = (SELECT min(pkid) FROM HomeList)"];
+    [_db zpm_deleteTable:TABLE_NAME whereFormat:@"WHERE pkid = (SELECT min(pkid) FROM HomeList)"];
 }
 
 - (void)updateData
 {
-    [_db zpm_updateTable:LIST_NAME dicOrModel:@{@"name":@"testName"} whereFormat:@"WHERE pkid = (SELECT max(pkid) FROM HomeList)"];
+    [_db zpm_updateTable:TABLE_NAME dicOrModel:@{@"name":@"testName"} whereFormat:@"WHERE pkid = (SELECT max(pkid) FROM HomeList)"];
 }
 
 - (void)lookupData
 {
     //查找表中所有数据
-    NSArray *personArr = [_db zpm_lookupTable:LIST_NAME dicOrModel:[Person class] whereFormat:nil];
+    NSArray *personArr = [_db zpm_lookupTable:TABLE_NAME dicOrModel:[Person class] whereFormat:nil];
     NSLog(@"表中所有数据:%@", personArr);
 }
 
 - (void)lookupDataWithId
 {
     //查找表中所有数据
-    NSArray *personArr = [_db zpm_lookupTable:LIST_NAME dicOrModel:[Person class] whereFormat:@"where pkid = '2'"];
+    NSArray *personArr = [_db zpm_lookupTable:TABLE_NAME dicOrModel:[Person class] whereFormat:@"where pkid = '2'"];
     NSLog(@"name=liuzhao:%@", personArr);
 }
 
