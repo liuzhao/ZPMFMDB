@@ -11,12 +11,11 @@ pod 'ZPMFMDB'
 
 
 * 针对于FMDB的二次封装
-* 线程安全
-* 支持事务操作(目前others都仅支持线程安全)
-* 操作简单, Model和Dictionary直接存储
+* 支持swift和oc
+* 线程安全，支持事务操作
+* 操作简单, 支持Model和Dictionary直接存储，不侵入你的任何Model
 * 拓展性强
-* 不侵入你的任何Model
-* 不需要实现某些奇怪的协议
+* 不需要实现任何协议
 
 ## 使用教程
 
