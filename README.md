@@ -3,8 +3,6 @@
 
 ![Logo](https://github.com/liuzhao/ZPMFMDB/blob/master/Images/256.png "智联logo")
 
-[我的简书](https://www.jianshu.com/u/e83faf720ae7)
-
 ## 安装方法
 
 pod 'ZPMFMDB'
@@ -92,3 +90,6 @@ pod 'ZPMFMDB'
 ```
   NSArray *personArr = [_db zpm_lookupTable:TABLE_NAME dicOrModel:[Person class]];
 ```
+
+## 支持
+[我的简书](https://www.jianshu.com/u/e83faf720ae7)
