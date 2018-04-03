@@ -36,10 +36,9 @@ pod 'ZPMFMDB'
     - (instancetype)initWithDBName:(NSString *)dbName;
     - (instancetype)initWithDBName:(NSString *)dbName path:(NSString *)dbPath;
 
-
 ### 创建一个数据库和表
 ```
-  // LIST_NAME:你的表名  [Person class]：你自定义的model类
+  // TABLE_NAME:你的表名  [Person class]：你自定义的model类
   ZPMFMDB *db = [ZPMFMDB shareDatabase:@"ZpmHome.sqlite"];
   [db zpm_createTable:TABLE_NAME dicOrModel:[Person class]];
 ```
@@ -56,7 +55,7 @@ pod 'ZPMFMDB'
 #### 插入一组数据
 ```
   // 向TABLE_NAME表中插入一组数据，其中array是一个字典或者model的集合
-  [db jq_insertTable:TABLE_NAME dicOrModelArray:array];
+  [db zpm_insertTable:TABLE_NAME dicOrModelArray:array];
 ```
 
 ### 删除
