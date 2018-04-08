@@ -1,8 +1,6 @@
 # ZPMFMDB
 封装好的FMDB，目标是不会SQL也能直接使用。
 
-![Logo](https://github.com/liuzhao/ZPMFMDB/blob/master/Images/256.png "智联logo")
-
 ## 安装方法
 
 pod 'ZPMFMDB'
