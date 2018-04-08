@@ -38,7 +38,7 @@ pod 'ZPMFMDB'
   [db zpm_createTable:TABLE_NAME dicOrModel:[Person class]];
 ```
 
-### 增加
+### 增删查改之——增加
 #### 插入一条数据
 ```
   // person:你的实例化的model类
@@ -53,7 +53,7 @@ pod 'ZPMFMDB'
   [db zpm_insertTable:TABLE_NAME dicOrModelArray:array];
 ```
 
-### 删除
+### 增删查改之——删除
 #### 删除一条数据
 ```
   // 删除最后一条数据
@@ -66,7 +66,7 @@ pod 'ZPMFMDB'
   [db zpm_deleteAllDataFromTable:TABLE_NAME];
 ```
 
-### 更新
+### 增删查改之——更新
 #### 指定某条数据的更改
 ```
   // 更新表中最大的id的名字为小明
@@ -76,7 +76,7 @@ pod 'ZPMFMDB'
   [_db zpm_updateTable:TABLE_NAME dicOrModel:person whereFormat:@"WHERE zpid = (SELECT max(zpid) FROM TABLE_NAME)"];
 ```
 
-### 查找
+### 增删查改之——查找
 
 #### 按条件查找
 ```
